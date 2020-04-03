@@ -10,7 +10,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<String> _products = ['Computador'];
+  @override
+  List<String> _products = [
+    'Computador',
+    'Teste1',
+    'Teste2',
+  ];
+
+  String _text = '';
 
   @override
   Widget build(BuildContext context) {
@@ -18,17 +25,23 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(title: Center(child: Text('CDM - Tarefa A2.1'))),
         body: Column(children: [
+          TextField(
+            onChanged: (String value) {
+              _tarefas(value);
+            },
+          ),
           Container(
               margin: EdgeInsets.all(20.0),
               child: Center(
                 child: RaisedButton(
                     onPressed: () {
                       setState(() {
-                        _products.add('Mouse');
+                        print(_text);
+                        _products.add(_text);
                       });
                     },
                     child: Text(
-                      'Olá Mundo!',
+                      'Clique aqui!',
                       style: TextStyle(fontSize: 22),
                     )),
               )),
@@ -51,5 +64,11 @@ class _MyAppState extends State<MyApp> {
         ]),
       ),
     );
+  }
+
+  void _tarefas(String value) {
+    setState(() {
+      _text = value;
+    });
   }
 }
