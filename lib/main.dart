@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
         body: Column(children: [
           TextField(
             onChanged: (String value) {
-              _tarefas(value);
+              _text = value;
             },
           ),
           Container(
@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
                     onPressed: () {
                       setState(() {
                         print(_text);
-                        _products.add(_text);
+                        _tarefas(_text);
                       });
                     },
                     child: Text(
@@ -68,7 +68,9 @@ class _MyAppState extends State<MyApp> {
 
   void _tarefas(String value) {
     setState(() {
-      _text = value;
+            _text = value;
+            _products.add(_text);
+            print(value);
     });
   }
 }
